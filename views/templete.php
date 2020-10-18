@@ -26,17 +26,44 @@
 
 	<div class="wrapper">
 
-		<?php include "views/layout/layout.php"; ?>
+		<?php 
+
+
+		if (isset($_GET["ruta"])) {
+
+			if ($_GET["ruta"] == "usuarios") {
 		
-		  <!-- contenido principal de la pagina -->
+			
+		
+		include "views/layout/layout.php"; 
+
+		?>
+		
+ 
 		  <div class="content-wrapper"> 
 
 
+		  	<?php include "views/".$_GET["ruta"].".php" ?>
+
+
 		  </div>
-		  <!-- /contenido principal del pagina  -->
 
 
-		<?php include "views/layout/footer.php"; ?>
+
+		<?php
+
+		 include "views/layout/footer.php"; 
+          
+          }else {
+
+              
+                  include "views/login.php";
+
+	          }
+
+           }
+
+		?>
 
 
 	</div>

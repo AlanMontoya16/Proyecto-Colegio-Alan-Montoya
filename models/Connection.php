@@ -6,7 +6,9 @@
 
 
  
-        $link = new PDO("mysql:host=localhost", "dbname=nombre", "root", "root" );
+        $link = new PDO("mysql:host=localhost;dbname=BILL", "root", "root" );
+
+        $link->exec("set names utf8");
 
         return $link;
   	}
