@@ -1,7 +1,7 @@
 
 
     <!-- Formulario del login -->
-    <section class="content">
+    <section class="content mt-5">
       <div class="container-fluid">
         <div class="row">
 

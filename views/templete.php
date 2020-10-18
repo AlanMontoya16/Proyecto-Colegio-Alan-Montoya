@@ -96,3 +96,10 @@
 <script src="assets/dist/js/demo.js"></script>
 <!-- Toastr -->
 <script src="assets/plugins/toastr/toastr.min.js"></script>
+
+
+<!-- validaciones con jQuery -->
+<script src="assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="assets/plugins/jquery-validation/additional-methods.min.js"></script>
+<!-- validacion -->
+<script src="assets/plugins/jquery-validation/validation.js"></script>
