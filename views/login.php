@@ -24,13 +24,24 @@
                     <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña">
                   </div>
 
-                  <div class="form-group">
                     <button type="submit" class="btn btn-primary form-control">Ingresar <i class="fas fa-arrow-right"></i></button>
-                  </div>
+                 
 
                   <p class="mt-3 mb-1 text-center">
-                    <a href="#">Olvidé mi contraseña</a>
+                    <a href="#" class="text-dark">Olvidé mi contraseña</a>
                   </p>   
+
+                  <button type="submit" class="btn btn-outline-primary  form-control mt-5"><i class="fab fa-facebook mr-2"></i> Iniciar con facebook </button>
+
+                  <button type="submit" class="btn btn-outline-danger form-control mt-3"><i class="fab fa-google-plus mr-2"></i> Iniciar con Google+</button>
+
+                </div>
+
+                <div class="card-footer">
+                  
+                  <p class="mt-3 mb-1 text-center">
+                    <a href="registrarme"  class="btn btn-outline-dark">Registrarme <i class="fas fa-plus"></i></a>
+                  </p> 
 
                 </div>
 

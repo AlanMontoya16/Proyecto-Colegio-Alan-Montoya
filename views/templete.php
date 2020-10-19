@@ -54,10 +54,10 @@
 
 		 include "views/layout/footer.php"; 
           
-          }else {
+          }else if($_GET["ruta"] == "registrarme" || $_GET["ruta"] == "login"){
 
               
-                  include "views/login.php";
+                  include "views/".$_GET["ruta"].".php";
 
 	          }
 
