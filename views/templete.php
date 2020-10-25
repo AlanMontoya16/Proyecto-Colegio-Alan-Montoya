@@ -1,3 +1,5 @@
+<?php  session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,6 +19,9 @@
 	<!-- Toastr -->
 	<link rel="stylesheet" href="assets/plugins/toastr/toastr.min.css">
 
+	<!-- fullCalendar -->
+	<link rel="stylesheet" href="assets/plugins/fullcalendar/main.min.css">
+
 	<title>Document</title>
 
 </head>
@@ -26,44 +31,87 @@
 
 	<div class="wrapper">
 
-		<?php 
 
 
-		if (isset($_GET["ruta"])) {
+		<?php  if (isset($_SESSION["signIn"]) && $_SESSION["signIn"] == "true") {
 
-			if ($_GET["ruta"] == "usuarios") {
-		
+
+			if (isset($_GET["route"])) {
+
+				
+
+				if ($_GET["route"] == "usuarios" || $_GET["route"] == "home" || $_GET["route"] == "salir") {
+					
+
+					include "views/layout/layout.php";
+
+					echo '<div class="content-wrapper">'; 
+
+						 include "views/".$_GET["route"].".php";
+
+					echo '</div>';
+
+		           include "views/layout/footer.php"; 
+
+
+
+	            }else {  
+
+                   
+                   include "views/layout/layout.php"; 
+
+                   echo '<div class="content-wrapper">'; 
+
+                   	   include "views/others/error_404.php";
+
+                    echo '</div>';
+
+                   include "views/layout/footer.php"; 
+
+
+	           }
+
+				
+	       }else {
+
+
+	       	   include "views/layout/layout.php"; 
+
+	       	   echo '<div class="content-wrapper">'; 
+
+	       	   	   include "views/others/error_404.php";
+
+	       	    echo '</div>';
+
+	       	   include "views/layout/footer.php"; 
+
+			}
 			
+
+		}else if(isset($_GET["route"])) {
+
+			if($_GET["route"] == "registrarme" || $_GET["route"] == "login"){
+
+				include "views/".$_GET["route"].".php";
+
+			}else {
+                
+                include "views/error_404_public.php";
+
+			}
+
+		}else {
+                
+
+                include "views/login.php";
+
+		}?>
+
+
 		
-		include "views/layout/layout.php"; 
 
-		?>
 		
- 
-		  <div class="content-wrapper"> 
 
-
-		  	<?php include "views/".$_GET["ruta"].".php" ?>
-
-
-		  </div>
-
-
-
-		<?php
-
-		 include "views/layout/footer.php"; 
-          
-          }else if($_GET["ruta"] == "registrarme" || $_GET["ruta"] == "login"){
-
-              
-                  include "views/".$_GET["ruta"].".php";
-
-	          }
-
-           }
-
-		?>
 
 
 	</div>
@@ -103,3 +151,14 @@
 <script src="assets/plugins/jquery-validation/additional-methods.min.js"></script>
 <!-- validacion -->
 <script src="assets/plugins/jquery-validation/validation.js"></script>
+
+<!-- ChartJS -->
+<script src="assets/plugins/chart.js/Chart.min.js"></script>
+
+<!-- fullCalendar -->
+<script src="assets/plugins/fullcalendar/main.min.js"></script>
+
+
+<!-- graficas chart -->
+
+<script src="assets/graphs/graphs.js"></script>

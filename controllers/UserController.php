@@ -19,12 +19,20 @@
 
 
 	       	if (@$user["EMAIL"] == $_POST["email"] && @$user["PASSWORD"] == $_POST["password"]) {
-	       		
-	       		echo '<div class="alert-success" role="alert" >
-	       			Bienvenido
-	       		</div>';
 
-	       	}else {
+         
+	       			       		
+            $_SESSION["signIn"] = "true";
+
+            echo'<script>
+ 
+                window.location = "home"; 
+
+            </script>';
+
+
+
+          }else {
 
 	       		echo '<div class="alert-danger" role="alert">
 	       			Credenciales incorrectas

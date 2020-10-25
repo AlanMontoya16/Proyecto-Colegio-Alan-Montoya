@@ -8,6 +8,6 @@
 
 #Estos son los caracteres que se admitiran en la url
 
-	RewriteRule ^([-a-zA-Z0-9]+)$ index.php?ruta=$1
+	RewriteRule ^([-a-zA-Z0-9]+)$ index.php?route=$1
 
 	
