@@ -13,20 +13,29 @@
 	        
 	        $email = $_POST["email"];
 
-	       	$password = $_POST["password"];
+			$password = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+			
 
 	       	$user = User::login($email, $password);
 
-
-	       	if (@$user["EMAIL"] == $_POST["email"] && @$user["PASSWORD"] == $_POST["password"]) {
+	       	if (@$user["correo"] == $_POST["email"] && @$user["clave"] == $password) {
 
          
 	       			       		
             $_SESSION["signIn"] = "true";
+            
+
+            $_SESSION["nombre"] = $user["nombre"];
+
+            $_SESSION["apellido"] = $user["apellido"];
+
+            $_SESSION["rol"] = $user["rol"];
+
+
 
             echo'<script>
  
-                window.location = "home"; 
+                window.location = "inicio"; 
 
             </script>';
 
@@ -44,6 +53,15 @@
   	}
 
 
+    public static function ctrListarUsuario() {
+
+      $user = User::listarUsuario();
+      
+      return $user;
+
+    }
+
+
   	public static function new() {
 
   		if (isset($_POST["name"])) {
@@ -51,18 +69,39 @@
 
   			$name = $_POST["name"];
 
-  			$surname = $_POST["surname"];
+			$surname = $_POST["surname"];
+			  
+			$address = $_POST["address"];
+			
+			$typeDoc = $_POST["typeDoc"];
 
-  			$gender = $_POST["gender"];
+			$document = $_POST["document"];
 
-  			$birthdate = $_POST["birthdate"];
+			$role = $_POST["role"];
 
   			$email = $_POST["email"];
 
-  			$cellphone = $_POST["cellphone"];
+			$cellphone = $_POST["cellphone"];
 
 
-  			$user = User::new($name, $surname, $gender, $birthdate, $email, $cellphone);
+			$str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+            $password1 = "";
+
+            for($i=0; $i<=9; $i++) {
+               
+               //obtenemos un caracter aleatorio escogido de la cadena de caracteres
+               $password1 .= substr($str,rand(0,62),1);     
+            }
+
+			$encriptar = crypt($password1, '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+			echo $password1;
+		
+			  
+            
+
+
+  			$user = User::new($name, $surname, $encriptar, $address, $typeDoc, $document, $role, $email, $cellphone);
 
   			if ($user == "true") {
   				
@@ -74,12 +113,14 @@
 
   			}else {
 
-  				echo "<div>
-  					error 
+  				echo "<div class='alert-danger'>
+  					error al registrar
   				</div> ";
   			}
   	}
 
   }
+
+
 
  }

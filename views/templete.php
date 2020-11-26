@@ -22,11 +22,11 @@
 	<!-- fullCalendar -->
 	<link rel="stylesheet" href="assets/plugins/fullcalendar/main.min.css">
 
-	<title>Document</title>
+	<title>LA FUENTE</title>
 
 </head>
 
-<body class="hold-transition sidebar-mini sidebar-collapse">
+<body class="hold-transition sidebar-mini sidebar-collapse layout-fixed ">
 
 
 	<div class="wrapper">
@@ -40,7 +40,7 @@
 
 				
 
-				if ($_GET["route"] == "usuarios" || $_GET["route"] == "home" || $_GET["route"] == "salir") {
+				if ($_GET["route"] == "usuarios" || $_GET["route"] == "inicio" || $_GET["route"] == "salir" || $_GET["route"] == "acudientes" || $_GET["route"] == "asignatura" || $_GET["route"] == "curso" || $_GET["route"] == "dimension" || $_GET["route"] == "periodo" || $_GET["route"] == "nota" || $_GET ["route"] == "grado" || $_GET ["route"] == "programacion" || $_GET ["route"] == "plan") {
 					
 
 					include "views/layout/layout.php";
@@ -62,7 +62,7 @@
 
                    echo '<div class="content-wrapper">'; 
 
-                   	   include "views/others/error_404.php";
+                   	   include "views/error_404.php";
 
                     echo '</div>';
 
@@ -96,7 +96,7 @@
 
 			}else {
                 
-                include "views/error_404_public.php";
+                include "views/error_404.php";
 
 			}
 
@@ -138,6 +138,9 @@
 <script src="assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script src="assets/plugins/datatables/call-datatable.js"></script>
+
 <!-- AdminLTE App -->
 <script src="assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -162,3 +165,8 @@
 <!-- graficas chart -->
 
 <script src="assets/graphs/graphs.js"></script>
+
+
+<!-- sweetAlert -->
+
+<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>

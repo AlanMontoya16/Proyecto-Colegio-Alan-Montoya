@@ -26,7 +26,7 @@
 
           <p>
             No pudimos encontrar la página que buscaba, puede revisar las páginas en el 
-            menu lateral o volver a la <a href="home">página de inicio</a>.
+            menu lateral o volver a la <a href="inicio">página de inicio</a>.
           </p>
 
         </div>

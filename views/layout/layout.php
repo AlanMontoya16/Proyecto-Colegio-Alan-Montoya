@@ -8,12 +8,7 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+
     </ul>
     <!-- /. links del menu horizontal -->
 
@@ -24,27 +19,19 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header">Notificaciones</span>
+          <div class="dropdown-divider"></div>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+            <i class="fas fa-file mr-2"></i> 3 nuevos reportes
+            <span class="float-right text-muted text-sm">hace: 2 dias</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="salir" class="btn btn-success">Salir</a>
+          
+          <center><a href="salir" class="btn btn-success">Cerrar Sesión</a></center>
         </div>
       </li>
       <!-- /. Notificaciones del menu horizontal -->
@@ -71,19 +58,19 @@
   <!-- menu vertical -->
   <aside class="main-sidebar sidebar-light-dark elevation-4">
 
-    <a href="../../index3.html" class="brand-link">
-<!--       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
+      <img src="assets/dist/img/logo.png" alt="AdminLTE Logo"  width="50px">
+      <span class="brand-text font-weight-light">Colegio La Fuente</span>
+
      
     <!-- titulo y foto del menu vertical -->
     <div class="sidebar">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-<!--           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
+          <img src="assets/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo $_SESSION["nombre"]." ".$_SESSION["apellido"]; ?></a>
+          <a href="#" class="d-block"><?php echo $_SESSION["rol"]; ?></a>
         </div>
       </div>
 
@@ -91,11 +78,11 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
           <!-- item desplegable -->
-          <li class="nav-item">
+     <!--  <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="fas fa-home"></i>
               <p>
-                Dashboard
+                Inicio
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -119,18 +106,110 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
+          <!-- item desplegable -->
 
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="inicio" class="nav-link text-secondary">
+              <i class="fas fa-home"></i>
               <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
+                Inicio
+<!--                 <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>
 
+
+              <li class="nav-item">
+                <a href="usuarios" class="nav-link text-secondary">
+                  <i class="fas fa-user"></i>
+                  <p>
+                    Usuarios
+    <!--                 <span class="right badge badge-danger">New</span> -->
+                  </p>
+                </a>
+              </li>
+
+
+                <li class="nav-item">
+                  <a href="acudientes" class="nav-link text-secondary">
+                    <i class="fas fa-users"></i>
+                    <p>
+                      Acudiente
+      <!--                 <span class="right badge badge-danger">New</span> -->
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="asignatura" class="nav-link text-secondary">
+                    <i class="fas fa-table"></i>
+                    <p>
+                      Asignatura
+      <!--                 <span class="right badge badge-danger">New</span> -->
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="curso" class="nav-link text-secondary">
+                    <i class="fas fa-child"></i>
+                    <p>
+                      Curso
+      <!--                 <span class="right badge badge-danger">New</span> -->
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="dimension" class="nav-link text-secondary">
+                    <i class="fas fa-list"></i>
+                    <p>
+                      Dimensión
+      <!--                 <span class="right badge badge-danger">New</span> -->
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="periodo" class="nav-link text-secondary">
+                    <i class="fas fa-calendar"></i>
+                    <p>
+                      Periodo
+      <!--                 <span class="right badge badge-danger">New</span> -->
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="nota" class="nav-link text-secondary">
+                    <i class="fas fa-book"></i>
+                    <p>
+                      Notas
+      <!--                 <span class="right badge badge-danger">New</span> -->
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="grado" class="nav-link text-secondary">
+                    <i class="fas fa-university"></i>
+                    <p>
+                      Grado
+      <!--                 <span class="right badge badge-danger">New</span> -->
+                    </p>
+                  </a>
+                </li>
+                <a href="programacion" class="nav-link text-secondary">
+                    <i class="fas fa-clock"></i>
+                    <p>
+                      Programación
+      <!--                 <span class="right badge badge-danger">New</span> -->
+                    </p>
+                  </a>
+                </li>
+                <a href="plan" class="nav-link text-secondary">
+                    <i class="fas fa-ad"></i>
+                    <p>
+                      Plan de acción
+      <!--                 <span class="right badge badge-danger">New</span> -->
+                    </p>
+                  </a>
+                </li>
         </ul>
       </nav>
     </div>

@@ -1,8 +1,8 @@
 <!-- footer -->
 <footer class="main-footer">
   <div class="float-right d-none d-sm-block">
-    <b>Version</b> 3.1.0-pre
+    <b>Versión </b>1.0
   </div>
-  <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  <strong>Copyright &copy; 2020 <a href="#">Colegio Institucional La Fuente de Tocancipá</a>.</strong> Todos los derechos reservados.
 </footer>
 <!-- /.footer -->

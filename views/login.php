@@ -1,7 +1,8 @@
 
 
     <!-- Formulario del login -->
-    <section class="content mt-5">
+    <body background="assets/images/img_5.jpeg">
+    <center><section class="content mt-5">
       <div class="container-fluid">
         <div class="row">
 
@@ -10,6 +11,7 @@
             <div class="card card-outline card-primary">
               <div class="card-header">
                 <h3 class="text-center">Iniciar <span class="text-primary">Sesión</span></h3>
+                <center><img src="assets/images/ojalaestes.png" width="200" height="100"></center>
               </div>
 
               <form role="form" id="quickForm" class="validar" method="post">
@@ -28,22 +30,19 @@
                  
 
                   <p class="mt-3 mb-1 text-center">
-                    <a href="#" class="text-dark">Olvidé mi contraseña</a>
+                    <a href="recupera.php" class="text-dark">Olvidé mi contraseña</a>
                   </p>   
 
-                  <button type="submit" class="btn btn-outline-primary  form-control mt-5"><i class="fab fa-facebook mr-2"></i> Iniciar con facebook </button>
 
-                  <button type="submit" class="btn btn-outline-danger form-control mt-3"><i class="fab fa-google-plus mr-2"></i> Iniciar con Google+</button>
+                </div></center>
 
-                </div>
-
-                <div class="card-footer">
+<!--                 <div class="card-footer">
                   
                   <p class="mt-3 mb-1 text-center">
                     <a href="registrarme"  class="btn btn-outline-dark">Registrarme <i class="fas fa-plus"></i></a>
                   </p> 
 
-                </div>
+                </div> -->
 
 
                 <?php 
