@@ -113,7 +113,7 @@
                </tfoot>
              </table>
            </div>
-           <!-- /.card body -->
+           <!-- /.card body ------------------------------------------------------------------->
           <!-- card footer -->
            <div class="card-footer">
 
