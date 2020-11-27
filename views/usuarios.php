@@ -33,7 +33,7 @@
            <!-- card body -->
            <div class="card-body">
              <table id="example1" class="table table-striped">
-               <thead>
+               <thead class="table table-primary">
                <tr>
                  <th class="text-center" width="10px">#</th>
                  <th class="text-center">Nombre(s)</th>
@@ -44,6 +44,7 @@
                  <th class="text-center">Rol</th>
                  <th class="text-center">Correo Electrónico</th>
                  <th class="text-center">Dirección</th>
+                
                </tr>
                </thead>
                <tbody>
@@ -85,6 +86,7 @@
                  <th class="text-center">Rol</th>
                  <th class="text-center">Correo Electrónico</th>
                  <th class="text-center">Dirección</th>
+                 
                </tr>
                </tfoot>
              </table>
@@ -97,13 +99,84 @@
            </div>
            <!-- /. card footer -->
 
+           </div>
 
-         </div>
+<div class="card">
+<div class="card-header">
+  <h3 class="text-primary"> Editar Usuario <i class="fas fa-edit"></i></h3>
+</div>
+<div class="card-body">
+    <table id="example2" class="table ">
+      <thead class="table-info">
+      <tr>
+      <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre(s)</th>
+                 <th class="text-center">Apellidos</th>
+                 <th class="text-center">Tipo Documento</th>
+                 <th class="text-center">Documento</th>
+                 <th class="text-center">Celular</th>
+                 <th class="text-center">Rol</th>
+                 <th class="text-center">Correo Electrónico</th>
+                 <th class="text-center">Dirección</th>
+        <th class="text-center">Editar</th>
+      </tr>
+      </thead>
+      <tbody>
 
-       </div>
-     </div>
-   </div>
- </section>
+
+       <?php  
+
+       $user = UserController::ctrListarUsuario();
+       foreach($user as $value) {
+         
+         echo "<tr>";
+         
+         echo '<form action="" method="post">';
+
+         echo '<td class="text-center">'.$value["id_usuario"].'</td>';
+         echo '<input type="hidden" class="form-control" value="'.$value["id_usuario"].'" name="ideditar">';                 
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombreUsuario"].'" name="editarnombre"></td>';           
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["apellido"].'" name="editarapellido"></td>';
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombreDoc"].'" name="editarDoc"></td>'; 
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["n_documento"].'" name="editarNDoc"></td>';
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["celular"].'" name="editarcelular"></td>';
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombreRol"].'" name="editarrol"></td>';               
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["correo"].'" name="editarcorreo"></td>';              
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["direccion"].'" name="editardireccion"></td>';
+
+         echo '<td class="text-center">
+                 <button type="submit" class="btn-xs btn-primary"><i class="fas fa-edit"></i></button>
+              </td>';
+
+              $editar = new UserController();
+              $editar->editUser();
+
+         echo '</form>';
+
+
+         echo "</tr>";
+
+       }
+
+       ?>
+
+      </tbody>
+      <tfoot>
+      <tr>
+      <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre(s)</th>
+                 <th class="text-center">Apellidos</th>
+                 <th class="text-center">Tipo Documento</th>
+                 <th class="text-center">Documento</th>
+                 <th class="text-center">Celular</th>
+                 <th class="text-center">Rol</th>
+                 <th class="text-center">Correo Electrónico</th>
+                 <th class="text-center">Dirección</th>
+        <th class="text-center">Editar</th>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
  <!-- /. ubicación de tablas y formularios -->
 
 
@@ -154,7 +227,7 @@
            <div class="form-row">
              <div class="form-group col-md-6">
                <label for="cellphone">Número de celular <span class="text-danger">*</span></label>
-               <input type="number" class="form-control" name="cellphone" id="cellphone" placeholder="Digite el número de celular">
+               <input type="number" class="form-control" name="phone" id="phone" placeholder="Digite el número de celular">
              </div>
 
              <div class="form-group col-md-6">

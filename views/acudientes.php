@@ -224,11 +224,11 @@
            <div class="form-row">
              <div class="form-group col-md-6">
                <label for="name">Nombre completo <span class="text-danger">*</span></label>
-               <input type="text" class="form-control" name="nombre" id="name" placeholder="Digíte su nombre completo">
+               <input type="text" class="form-control" name="name" id="name" placeholder="Digíte su nombre completo">
              </div>
              <div class="form-group col-md-6">
                <label for="surname">Apellidos <span class="text-danger">*</span></label>
-               <input type="text" class="form-control" name="apellido" id="surname" placeholder="Digíte sus apellidos">
+               <input type="text" class="form-control" name="surname" id="surname" placeholder="Digíte sus apellidos">
              </div>
            </div>
 
@@ -236,18 +236,18 @@
 
             <div class="form-group col-md-6">
               <label for="document">Número de documento <span class="text-danger">*</span></label>
-              <input type="number" class="form-control" name="documento" id="document" placeholder="Digíte su documento">
+              <input type="number" class="form-control" name="document" id="document" placeholder="Digíte su documento">
             </div>
              <div class="form-group col-md-6">
                <label for="email">Correo electrónico <span class="text-danger">*</span></label>
-               <input type="email" class="form-control" name="correo" id="email" placeholder="Digíte su correo electrónico">
+               <input type="email" class="form-control" name="email" id="email" placeholder="Digíte su correo electrónico">
              </div>
            </div>
 
            <div class="form-row">
             <div class="form-group col-md-6">
               <label for="email">Teléfono <span class="text-danger">*</span></label>
-              <input type="number" class="form-control" name="telefono" id="email" placeholder="Digíte su correo electrónico">
+              <input type="number" class="form-control" name="phone" id="phone" placeholder="Digíte su correo electrónico">
             </div>
             
            </div>

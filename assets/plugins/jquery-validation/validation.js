@@ -6,6 +6,13 @@ $(document).ready(function () {
           required: true,
           email: true,
         },
+        phone:{
+        required: true,
+        minlength: 10
+        },
+        grade:{
+        required: true,
+        },
         password: {
           required: true,
           minlength: 8,
@@ -41,6 +48,13 @@ $(document).ready(function () {
         email: {
           required: "Debe digitar el correo electrónico",
           email: "Debe digitar un correo valido"
+        },
+        phone: {
+         required: "Debe digitar un telefono",
+         minlength: "Minimo 10 digitos"
+        },
+        grade:{
+          required: "Debe digitar el grado"
         },
         password: {
           required: "Debe digitar la contraseña",

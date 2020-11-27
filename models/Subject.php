@@ -23,11 +23,11 @@ class Subject extends Connection {
         $stmt = null;
  		
      }
-     public static function editSubject($nombre, $id_grado,$asignatura) {
+     public static function editSubject($id_asignatura, $nombre, $id_grado) {
         $stmt = Connection::connect()->prepare("UPDATE asignatura SET nombre = :nombre, id_grado = :id_grado WHERE id_asignatura = :id_asignatura" );
+        $stmt->bindParam(":id_asignatura", $id_asignatura, PDO::PARAM_STR);
         $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
         $stmt->bindParam(":id_grado", $id_grado, PDO::PARAM_STR);
-        $stmt->bindParam(":id_asignatura", $id_asignatura, PDO::PARAM_STR);
         if ($stmt->execute()) {
 
         	return "true";

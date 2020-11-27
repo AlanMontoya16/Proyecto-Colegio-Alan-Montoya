@@ -38,6 +38,7 @@
                  <th class="text-center" width="10px">#</th>
                  <th class="text-center">Nombre</th>
                  <th class="text-center">Grado</th>
+                 <th class="text-center">Acciones</th>
                </tr>
                </thead>
                <tbody>
@@ -75,8 +76,6 @@
                   }
                   echo '<td class="text-center">
 
-                  <button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#modal-editar"> <i class="fas fa-edit"></i></button>
-
                   <button type="button" class="btn-xs btn-danger" idAsignatura="'.$value["id_asignatura"].'"> <i class="fas fa-lock"></i></button></td>';
                   echo "</tr>";
 
@@ -92,6 +91,7 @@
                  <th class="text-center" width="10px">#</th>
                  <th class="text-center">Nombre de Asignatura</th>
                  <th class="text-center">Grado</th>
+                 <th class="text-center">Acciones</th>
                </tr>
                </tfoot>
              </table>
@@ -103,14 +103,66 @@
 
            </div>
            <!-- /. card footer -->
+           </div>
+
+<div class="card">
+<div class="card-header">
+  <h3 class="text-primary"> Editar Asignatura <i class="fas fa-edit"></i></h3>
+</div>
+<div class="card-body">
+    <table id="example2" class="table ">
+      <thead class="table-primary">
+      <tr>
+                 <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre de Asignatura</th>
+                 <th class="text-center">Grado</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+      </thead>
+      <tbody>
 
 
-         </div>
+       <?php  
 
-       </div>
-     </div>
-   </div>
- </section>
+       $subject = SubjectController::ctrListarAsignatura();
+       foreach($subject as $value) {
+         
+         echo "<tr>";
+         
+         echo '<form action="" method="post">';
+
+         echo '<td class="text-center">'.$value["id_asignatura"].'</td>';
+         echo '<input type="hidden" class="form-control" value="'.$value["id_asignatura"].'" name="ideditar">';                 
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombre"].'" name="editarnombre"></td>';           
+         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["id_grado"].'" name="editargrado"></td>';              
+         echo '<td class="text-center">
+                 <button type="submit" class="btn-xs btn-primary"><i class="fas fa-edit"></i></button>
+              </td>';
+
+              $editar = new SubjectController();
+              $editar->editSubject();
+
+         echo '</form>';
+
+
+         echo "</tr>";
+
+       }
+
+       ?>
+
+      </tbody>
+      <tfoot>
+      <tr>
+      <tr>
+                 <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre de Asignatura</th>
+                 <th class="text-center">Grado</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+      </tfoot>
+    </table>
+  </div>
  <!-- /. ubicación de tablas y formularios -->
 
 
@@ -136,10 +188,6 @@
 
            <div class="form-row">
              <div class="form-group col-md-6">
-               <label for="name">id_asignatura<span class="text-danger">*</span></label>
-               <input type="text" class="form-control" name="id_asignatura" id="name" placeholder="Digíte el id de la asignatura">
-             </div>
-             <div class="form-group col-md-6">
                <label for="name">Nombre <span class="text-danger">*</span></label>
                <input type="text" class="form-control" name="nombre" id="name" placeholder="Digíte el nombre de la asignatura">
              </div>
@@ -147,11 +195,10 @@
           </div>
           <div class="form-group col-md-6">
                <label for="grade">Grado <span class="text-danger">*</span></label>
-               <input type="text" class="form-control" name="grado" id="grade" placeholder="Digíte el grado">
+               <input type="text" class="form-control" name="grade" id="grade" placeholder="Digíte el grado">
              </div>
            </div>
           </div>
-
           <div class="modal-footer pull-right">
             <button type="reset" class="btn btn-outline-secondary">Limpiar <i class="fas fa-backspace"></i></button>
            <button type="submit" class="btn btn-success">Guardar <i class="fas fa-save"></i></button>
@@ -194,10 +241,6 @@
           <div class="modal-body">
 
           <div class="form-row">
-             <div class="form-group col-md-6">
-               <label for="name">id_asignatura <span class="text-danger">*</span></label>
-               <input type="text" class="form-control" name="editarid" id="editarid" placeholder="Digíte el id">
-             </div>
            <div class="form-row">
              <div class="form-group col-md-6">
                <label for="name">Nombre de asignatura <span class="text-danger">*</span></label>

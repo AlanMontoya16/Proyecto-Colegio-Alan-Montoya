@@ -4,7 +4,7 @@ class SubjectController {
 
 
 
-    public static function newSubject(){
+    public static function newSubject() {
 
    if (isset($_POST["nombre"])) {
 
@@ -13,7 +13,7 @@ class SubjectController {
    $id_grado = $_POST["id_grado"];
    
    $subject = Subject::newSubject($nombre, $id_grado);
-   
+
     if ($subject == "true") {
         echo "<div class='alert-success'>
         Asignatura Registrada correctamente
@@ -32,27 +32,32 @@ class SubjectController {
     }
 
     public static function editSubject(){
-        if(isset($_POST["editarnombre"]))
-        $id_asignatura = $_POST["editarid"];
+        if(isset($_POST["ideditar"]))
+        $id_asignatura = $_POST["ideditar"];
         $nombre = $_POST["editarnombre"];
         $id_grado = $_POST["editargrado"];
         
-        echo $nombre;
-        echo $id_grado;
+        $subject = Subject::editSubject($id_asignatura, $nombre, $id_grado);
 
-        $subject = Subject::editSubject($nombre,$id_grado,$id_asignatura);
+        if ($subject == "true"){ 
 
-        if ($subject == "true") {
+            echo'<script>
+ 
+                     window.location = "asignatura"; 
 
-            echo"<div classs='alert-success'>
-            Usuario actualizado correctamente
-            </div>";
-            
-        } else {
+                    </script>';
 
-            echo "<div class='alert-success'> Usuario no actualizado
-            </div>";
-        }
-        }
+
+        }else 
+        echo'<script>
+        
+        window.location = "asignatura";
+        
+        </script>';
+
+
+
+        } 
+    
     }
 

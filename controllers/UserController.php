@@ -61,7 +61,51 @@
 
     }
 
+	public static function editUser() {
 
+		if (isset($_POST["ideditar"])) {
+	
+		  $id = $_POST["ideditar"];
+		  
+		  $nombre = $_POST["editarnombre"];
+	
+		  $apellido = $_POST["editarapellido"];
+	
+		  $documento = $_POST["editarDoc"];
+	
+		  $correo = $_POST["editarNDoc"];
+	
+		  $telefono = $_POST["editarcelular"];
+	
+		  $telefono = $_POST["editarrol"];
+	
+		  $telefono = $_POST["editarcorreo"];
+	
+		  $telefono = $_POST["editardireccion"];
+	
+	
+		  $user = User::editUser($id, $name, $surname, $address, $typeDoc, $document, $role, $email, $cellphone);
+	
+	
+		  if ($user == "true") {
+			
+			echo'<script>
+	
+			window.location = "usuarios"; 
+	
+				</script>';
+	
+		  }else {
+				 
+			echo'<script>
+	
+				 window.location = "usuarios"; 
+	
+				</script>';
+	
+		  }
+		}
+	}
   	public static function new() {
 
   		if (isset($_POST["name"])) {
@@ -120,7 +164,4 @@
   	}
 
   }
-
-
-
  }
