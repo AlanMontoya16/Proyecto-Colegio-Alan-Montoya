@@ -38,12 +38,13 @@
 
 
 
- 		public static function editPlan($nombre_actividad, $fecha_inicio, $fecha_cierre, $id_programacion, $id_dimension) {
+ 		public static function editPlan($id_plan, $nombre_actividad, $fecha_inicio, $fecha_cierre, $id_programacion, $id_dimension) {
 
 
  			$stmt = Connection::connect()->prepare("UPDATE plan SET nombre_actividad = :nombre_actividad, fecha_inicio = :fecha_inicio,
-			fecha_cierre = :fecha_cierre, id_programacion = :id_programacion WHERE id_dimension = :id_dimension");
+			fecha_cierre = :fecha_cierre, id_programacion = :id_programacion, id_dimension = :id_dimension WHERE id_plan = :id_plan ");
 
+             $stmt->bindParam(":id_dimension", $id_plan, PDO::PARAM_STR);
              $stmt->bindParam(":nombre_actividad", $nombre_actividad, PDO::PARAM_STR);
              $stmt->bindParam(":fecha_inicio", $fecha_inicio, PDO::PARAM_STR);
              $stmt->bindParam(":fecha_cierre", $id_usuario, PDO::PARAM_STR);

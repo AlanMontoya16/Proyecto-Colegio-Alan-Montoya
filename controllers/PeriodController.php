@@ -47,32 +47,37 @@
 
       public static function editPeriod() {
 
-            if (isset($_POST["editarnombre"])) {
+            if (isset($_POST["ideditar"])) {
+
+              $id_periodo = $_POST["ideditar"];
               
               $nombre = $_POST["editarnombre"];
 
+  			      $fecha_inicio = $_POST["editarfechai"];
 
-  			$fecha_inicio = $_POST["editarfecha_inicio"];
+  		      	$fecha_cierre = $_POST["editarfechac"];
 
-  			$fecha_cierre = $_POST["editarfecha_cierre"];
-
-  			$fecha_entrega_notas = $_POST["editarfecha_entrega_notas"];
+  			      $fecha_entrega_notas = $_POST["editarfechae"];
 
 
-              $period = Period::editPeriod($nombre, $fecha_inicio, $fecha_cierre, $fecha_entrega_notas);
+              $period = Period::editPeriod($id_periodo, $nombre, $fecha_inicio, $fecha_cierre, $fecha_entrega_notas);
 
 
               if ($period == "true") {
                 
-                echo "<div class='alert-success'>
-                  Periodo actualizado correctamente
-                </div>";
+                echo'<script>
+    
+                window.location = "periodo"; 
+    
+                    </script>';
 
               }else {
-                     
-                      echo "<div class='alert-danger'>
-                        Periodo no actualizado
-                      </div>";
+                 
+                echo'<script>
+    
+                     window.location = "periodo"; 
+    
+                    </script>';
 
               }
             }

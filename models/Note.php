@@ -32,11 +32,12 @@
 
 
 
- 		public static function editNote($nota, $id_plan) {
+ 		public static function editNote($id_nota, $nota, $id_plan) {
 
 
  			$stmt = Connection::connect()->prepare("UPDATE nota SET nota = :nota, id_plan = :id_plan WHERE id_nota = :id_nota");
 
+			$stmt->bindParam(":id_nota", $notas, PDO::PARAM_STR);
  			$stmt->bindParam(":nota", $nota, PDO::PARAM_STR);
  			$stmt->bindParam(":id_plan", $id_plan, PDO::PARAM_STR);
 

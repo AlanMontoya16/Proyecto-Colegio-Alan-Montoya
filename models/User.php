@@ -22,9 +22,9 @@
 
   	}
 
-    public static function new($name, $surname, $encriptar, $address, $typeDoc, $document, $role, $email, $cellphone) {
+    public static function new($name, $surname, $encriptar, $address, $typeDoc, $document, $role, $email, $cellphonee) {
 
-      $stmt = Connection::connect()->prepare("INSERT INTO USUARIO (NOMBRE, APELLIDO, CLAVE, CELULAR, ID_TIPO, N_DOCUMENTO, ID_ROL, CORREO, DIRECCION) VALUES (:name, :surname, :password, :cellphone, :typeDoc, :document, :role, :email, :address);");
+      $stmt = Connection::connect()->prepare("INSERT INTO USUARIO (NOMBRE, APELLIDO, CLAVE, CELULAR, ID_TIPO, N_DOCUMENTO, ID_ROL, CORREO, DIRECCION) VALUES (:name, :surname, :password, :cellphone, :typeDoc, :document, :role, :email, :address)");
 
       
       $stmt->bindParam(":name", $name, PDO::PARAM_STR);
@@ -47,23 +47,30 @@
 
       }
 
+      $stmt->close();
+
+      $stmt = null;
+      
+
     }
-    public static function editUser($id, $name, $surname, $address, $typeDoc, $document, $role, $email, $cellphone) {
 
 
-      $stmt = Connection::connect()->prepare("UPDATE usuario SET nombre = :name, apellido = :surname, direccion = :address, id_tipo = :typeDoc, n_documento = :document, id_rol = :role, correo = :email, telefono = :cellphone WHERE id_usuario = :id");
+
+
+    public static function editUser($id, $nombre, $apellido, $documento, $Numdocumento, $celular, $rol, $correo, $direccion) {
+
+
+      $stmt = Connection::connect()->prepare("UPDATE usuario SET nombre = :name, apellido = :surname, direccion = :address, id_tipo = :typeDoc, n_documento = :document, id_rol = :role, correo = :email, celular = :cellphone WHERE id_usuario = :id");
 
       $stmt->bindParam(":id", $id, PDO::PARAM_STR);
-      $stmt->bindParam(":name", $name, PDO::PARAM_STR);
-      $stmt->bindParam(":surname", $surname, PDO::PARAM_STR);
-      $stmt->bindParam(":address", $address, PDO::PARAM_STR);
-      $stmt->bindParam(":typeDoc", $typeDoc, PDO::PARAM_STR);
-      $stmt->bindParam(":document", $document, PDO::PARAM_STR);
-      $stmt->bindParam(":role", $role, PDO::PARAM_STR);
-      $stmt->bindParam(":email", $email, PDO::PARAM_STR);
-      $stmt->bindParam(":cellphone", $cellphone, PDO::PARAM_STR);
-      $stmt->bindParam(":password", $encriptar, PDO::PARAM_STR);
-
+      $stmt->bindParam(":name", $nombre, PDO::PARAM_STR);
+      $stmt->bindParam(":surname", $apellido, PDO::PARAM_STR);
+      $stmt->bindParam(":address", $direccion, PDO::PARAM_STR);
+      $stmt->bindParam(":typeDoc", $documento, PDO::PARAM_STR);
+      $stmt->bindParam(":document", $Numdocumento, PDO::PARAM_STR);
+      $stmt->bindParam(":role", $rol, PDO::PARAM_STR);
+      $stmt->bindParam(":email", $correo, PDO::PARAM_STR);
+      $stmt->bindParam(":cellphone", $celular, PDO::PARAM_STR);
 
          if ($stmt->execute()) {
 
@@ -72,8 +79,8 @@
          }else {
 
            return "false";
-         }
 
+         }
 
          $stmt->close();
 

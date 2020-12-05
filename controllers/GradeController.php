@@ -30,25 +30,30 @@ class GradeController {
     public static function editGrade() {
 
         if (isset($_POST["editarcurso"])) {
-          
+
+          $id_curso = $_POST["ideditar"];
           $n_curso = $_POST["editarcurso"];
 
 
 
-          $grade = Grade::editGrade($n_curso);
+          $grade = Grade::editGrade($id_curso, $n_curso);
 
 
           if ($grade == "true") {
-            
-            echo "<div class='alert-success'>
-              Curso actualizado correctamente
-            </div>";
+                
+            echo'<script>
+
+            window.location = "curso"; 
+
+                </script>';
 
           }else {
                  
-                  echo "<div class='alert-danger'>
-                    Curso no actualizado
-                  </div>";
+            echo'<script>
+
+                 window.location = "curso"; 
+
+                </script>';
 
           }
         }

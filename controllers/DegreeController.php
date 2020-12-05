@@ -9,9 +9,6 @@
   		if (isset($_POST["nombre"])) {
   			
   			$nombre = $_POST["nombre"];
-
-
-
   			$degree = Degree::newDegree($nombre);
 
 
@@ -41,27 +38,31 @@
 
       public static function editDegree() {
 
-            if (isset($_POST["editarnombre"])) {
-              
+            if (isset($_POST["ideditar"])) {
+
+              $id_grado = $_POST["ideditar"];
               $nombre = $_POST["editarnombre"];
 
 
 
-              $degree = Degree::editDegree($nombre);
+              $degree = Degree::editDegree($id_grado ,$nombre);
 
 
               if ($degree == "true") {
                 
-                echo "<div class='alert-success'>
-                  Grado actualizado correctamente
-                </div>";
+                echo'<script>
 
-              }else {
-                     
-                      echo "<div class='alert-danger'>
-                        Grado no actualizado
-                      </div>";
+            window.location = "grado"; 
 
+                </script>';
+
+          }else {
+                 
+            echo'<script>
+
+                 window.location = "grado"; 
+
+                </script>';
               }
             }
     }

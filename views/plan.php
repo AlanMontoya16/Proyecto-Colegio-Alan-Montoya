@@ -94,16 +94,74 @@
 
            </div>
            <!-- /. card footer -->
-
-
+           <div class="card">
+         <div class="card-header">
+           <h3 class="text-primary"> Editar Curso <i class="fas fa-edit"></i></h3>
          </div>
+         <div class="card-body">
+             <table id="example2" class="table ">
+               <thead class="table-info">
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre de actividad</th>
+                 <th class="text-center">Fecha de inicio</th>
+                 <th class="text-center">Fecha de cierre</th>
+                 <th class="text-center">Programación</th>
+                 <th class="text-center">Dimensión</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </thead>
+               <tbody>
 
-       </div>
-     </div>
-   </div>
+
+                <?php  
+
+                $plan = PlanController::ctrListarPlan();
+                foreach($plan as $value) {
+                  
+                  echo "<tr>";
+                  
+                  echo '<form action="" method="post">';
+
+                  echo '<td class="text-center">'.$value["id_plan"].'</td>';
+                  echo '<input type="hidden" class="form-control" value="'.$value["id_plan"].'" name="ideditar">';                 
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombre_actividad"].'" name="editarnombre"></td>';
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["fecha_inicio"].'" name="editarfechai"></td>'; 
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["fecha_cierre"].'" name="editarfechac"></td>'; 
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombre_programacion"].'" name="editarprogramacion"></td>';   
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombre"].'" name="editardimension"></td>';          
+                  echo '<td class="text-center">
+                          <button type="submit" class="btn-xs btn-primary"><i class="fas fa-edit"></i></button>
+                       </td>';
+
+                       $editar = new PlanController();
+                       $editar->editPlan();
+
+                  echo '</form>';
 
 
-    <!-- CALENDARIO -->
+                  echo "</tr>";
+
+                }
+
+                ?>
+
+               </tbody>
+               <tfoot>
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre de actividad</th>
+                 <th class="text-center">Fecha de inicio</th>
+                 <th class="text-center">Fecha de cierre</th>
+                 <th class="text-center">Programación</th>
+                 <th class="text-center">Dimensión</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </tfoot>
+             </table>
+           </div>
+
+    <!-- CALENDARIO
     <div class="col-12">
      <div class="card card-outline card-warning+">
        <div class="card-header">
@@ -128,7 +186,8 @@
        </div>
 
      </div>
-   </div>
+   </div> -->
+
    <!-- CALENDARIO -->
 
    </div>
@@ -305,7 +364,7 @@
 
  <!-- FULL CALENDAR -->
  
- <script>
+ <!-- <script>
 
 
  document.addEventListener('DOMContentLoaded', function() {
@@ -371,4 +430,4 @@
 
  </script>
  
- <!-- /. FULL CALENDAR -->
+ /. FULL CALENDAR -->

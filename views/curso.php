@@ -53,7 +53,7 @@
                   echo '<td class="text-center">'.$value["n_curso"].'</td>';
                   echo '<td class="text-center">
 
-                  <button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#modal-editar"> <i class="fas fa-edit"></i></button>
+                  
 
                   <button type="button" class="btn-xs btn-danger" idCurso="'.$value["id_curso"].'"> <i class="fas fa-lock"></i></button></td>';
                   echo "</tr>";
@@ -83,12 +83,60 @@
            <!-- /. card footer -->
 
 
+           <div class="card">
+         <div class="card-header">
+           <h3 class="text-primary"> Editar Curso <i class="fas fa-edit"></i></h3>
          </div>
+         <div class="card-body">
+             <table id="example2" class="table ">
+               <thead class="table-info">
+               <tr>
+                 <th class="text-center" width="10px">#</th>
+                 <th class="text-center"># del curso</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </thead>
+               <tbody>
 
-       </div>
-     </div>
-   </div>
- </section>
+
+                <?php  
+
+                $grade = GradeController::ctrListarCurso();
+                foreach($grade as $value) {
+                  
+                  echo "<tr>";
+                  
+                  echo '<form action="" method="post">';
+
+                  echo '<td class="text-center">'.$value["id_curso"].'</td>';
+                  echo '<input type="hidden" class="form-control" value="'.$value["id_curso"].'" name="ideditar">';                 
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["n_curso"].'" name="editarcurso"></td>';           
+                  echo '<td class="text-center">
+                          <button type="submit" class="btn-xs btn-primary"><i class="fas fa-edit"></i></button>
+                       </td>';
+
+                       $editar = new GradeController();
+                       $editar->editGrade();
+
+                  echo '</form>';
+
+
+                  echo "</tr>";
+
+                }
+
+                ?>
+
+               </tbody>
+               <tfoot>
+               <tr>
+                 <th class="text-center" width="10px">#</th>
+                 <th class="text-center"># del curso</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </tfoot>
+             </table>
+           </div>
  <!-- /. ubicación de tablas y formularios -->
 
 
@@ -115,7 +163,7 @@
            <div class="form-row">
              <div class="form-group col-md-6">
                <label for="surname">Numero del curso <span class="text-danger">*</span></label>
-               <input type="text" class="form-control" name="n_curso" id="n_curso" placeholder="Digíte el curso">
+               <input type="number" class="form-control" name="n_curso" id="n_curso" placeholder="Digíte el curso">
              </div>
            </div>
           </div>
@@ -146,7 +194,7 @@
 
 
  <!-- modal de nuevo editar -->
- <div class="modal fade" id="modal-editar">
+ <!-- <div class="modal fade" id="modal-editar">
    <div class="modal-dialog">
      <div class="modal-content">
 
@@ -179,20 +227,11 @@
            <button type="submit" class="btn btn-success">Guardar <i class="fas fa-save"></i></button>
          </div>
 
-
-         <?php 
-
-             $grade = new GradeController();
-
-             $grade-> editGrade();
-
-          ?>
-
      </form>
 
      </div>
    </div>
- </div>
+ </div> -->
  <!-- /. modal de nuevo registro -->
 
 

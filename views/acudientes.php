@@ -121,7 +121,7 @@
            <!-- /. card footer -->
 
 
-         </div>
+         
 
          <div class="card">
          <div class="card-header">
@@ -246,8 +246,8 @@
 
            <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="email">Teléfono <span class="text-danger">*</span></label>
-              <input type="number" class="form-control" name="phone" id="phone" placeholder="Digíte su correo electrónico">
+              <label for="cellphone">Teléfono <span class="text-danger">*</span></label>
+              <input type="number" class="form-control" name="cellphone" id="cellphone" placeholder="Digíte su teléfono">
             </div>
             
            </div>

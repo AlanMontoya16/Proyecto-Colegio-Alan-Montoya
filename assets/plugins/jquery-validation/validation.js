@@ -4,9 +4,16 @@ $(document).ready(function () {
       rules: {
         email: {
           required: true,
-          email: true,
+          email: true
         },
-        phone:{
+        n_curso:{
+          required: true,
+        },
+        address:{
+          required:true,
+          minlength:10
+        },
+        cellphone:{
         required: true,
         minlength: 10
         },
@@ -19,7 +26,7 @@ $(document).ready(function () {
           maxlength: 16
         },
         terms: {
-          required: true
+          required: true,
         },
         name: {
           required: true,
@@ -32,7 +39,7 @@ $(document).ready(function () {
           maxlength: 25
         },
         typeDocument: {
-          required:true
+          required:true,
         },
         document: {
           required: true,
@@ -41,7 +48,7 @@ $(document).ready(function () {
           maxlength: 10
         },
         birthdate: {
-          required: true
+          required: true,
         }
       },
       messages: {
@@ -49,7 +56,14 @@ $(document).ready(function () {
           required: "Debe digitar el correo electrónico",
           email: "Debe digitar un correo valido"
         },
-        phone: {
+        n_curso:{
+          required: "Debe digitar un curso",
+        },
+        address:{
+          required:"Debe digitar una dirección valida",
+          minlength:"Minimo 10 digitos"
+        },
+        cellphone: {
          required: "Debe digitar un telefono",
          minlength: "Minimo 10 digitos"
         },

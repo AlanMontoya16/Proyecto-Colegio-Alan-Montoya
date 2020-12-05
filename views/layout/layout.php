@@ -17,19 +17,7 @@
 
       <!-- Notificaciones del menu horizontal -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge"></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">Notificaciones</span>
-          <div class="dropdown-divider"></div>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 nuevos reportes
-            <span class="float-right text-muted text-sm">hace: 2 dias</span>
-          </a>
-          <div class="dropdown-divider"></div>
+
           
           <center><a href="salir" class="btn btn-success">Cerrar Sesión</a></center>
         </div>
@@ -119,6 +107,7 @@
             </a>
           </li>
 
+          <?php if($_SESSION["rol"] == "Coordinador"): ?>
 
               <li class="nav-item">
                 <a href="usuarios" class="nav-link text-secondary">
@@ -130,7 +119,9 @@
                 </a>
               </li>
 
+          <?php endif ?>    
 
+          <?php if($_SESSION["rol"] == "Coordinador"): ?>
                 <li class="nav-item">
                   <a href="acudientes" class="nav-link text-secondary">
                     <i class="fas fa-users"></i>
@@ -140,6 +131,9 @@
                     </p>
                   </a>
                 </li>
+                <?php endif ?>
+
+                <?php if( $_SESSION["rol"] == "Docente" ||  $_SESSION["rol"] == "Coordinador"): ?> 
                 <li class="nav-item">
                   <a href="asignatura" class="nav-link text-secondary">
                     <i class="fas fa-table"></i>
@@ -149,6 +143,9 @@
                     </p>
                   </a>
                 </li>
+                <?php endif ?>
+
+                <?php if( $_SESSION["rol"] == "Docente" ||  $_SESSION["rol"] == "Coordinador"): ?>
                 <li class="nav-item">
                   <a href="curso" class="nav-link text-secondary">
                     <i class="fas fa-child"></i>
@@ -167,6 +164,9 @@
                     </p>
                   </a>
                 </li>
+                <?php endif ?>
+
+                <?php if( $_SESSION["rol"] == "Docente" ||  $_SESSION["rol"] == "Coordinador"): ?>
                 <li class="nav-item">
                   <a href="periodo" class="nav-link text-secondary">
                     <i class="fas fa-calendar"></i>
@@ -176,6 +176,9 @@
                     </p>
                   </a>
                 </li>
+                <?php endif ?>
+
+
                 <li class="nav-item">
                   <a href="nota" class="nav-link text-secondary">
                     <i class="fas fa-book"></i>
@@ -185,6 +188,7 @@
                     </p>
                   </a>
                 </li>
+                <?php if( $_SESSION["rol"] == "Docente" ||  $_SESSION["rol"] == "Coordinador"): ?>
                 <li class="nav-item">
                   <a href="grado" class="nav-link text-secondary">
                     <i class="fas fa-university"></i>
@@ -194,6 +198,9 @@
                     </p>
                   </a>
                 </li>
+                <?php endif ?>
+
+                <?php if($_SESSION["rol"] == "Docente" || $_SESSION["rol"] == "Coordinador"):?>
                 <a href="programacion" class="nav-link text-secondary">
                     <i class="fas fa-clock"></i>
                     <p>
@@ -202,6 +209,9 @@
                     </p>
                   </a>
                 </li>
+                <?php endif ?>
+
+                <?php if($_SESSION["rol"] == "Docente" || $_SESSION["rol"] == "Coordinador"):?>
                 <a href="plan" class="nav-link text-secondary">
                     <i class="fas fa-ad"></i>
                     <p>
@@ -210,6 +220,7 @@
                     </p>
                   </a>
                 </li>
+                <?php endif ?>
         </ul>
       </nav>
     </div>

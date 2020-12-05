@@ -25,9 +25,11 @@
          <div class="card">
 
            <!-- card-header -->
+           <?php if($_SESSION["rol"] == "Docente" || $_SESSION["rol"] == "Coordinador"): ?>
            <div class="card-header">
              <button class="btn btn-danger text-right" data-toggle="modal" data-target="#modal-danger">Notas <i class="fas fa-plus"></i></button>
            </div>
+           <?php endif ?>
            <!-- /.card-header -->
 
            <!-- card body -->
@@ -38,7 +40,9 @@
                  <th class="text-center" width="10px">#</th>
                  <th class="text-center">Nota</th>
                  <th class="text-center">Plan Acción</th>
+                 <?php if($_SESSION["rol"] == "Docente" || $_SESSION["rol"] == "Coordinador"):?>
                  <th class="text-center">Acciones</th>
+                 <?php endif ?>
                </tr>
                </thead>
                <tbody>
@@ -54,16 +58,17 @@
                   echo '<td class="text-center">'.$value["id_nota"].'</td>';
                   echo '<td class="text-center">'.$value["nota"].'</td>';
                   echo '<td class="text-center">'.$value["nombre_actividad"].'</td>';
-                  echo '<td class="text-center">
 
+                 
+
+                  echo '<td class="text-center">
                   <button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#modal-editar"> <i class="fas fa-edit"></i></button>
 
                   <button type="button" class="btn-xs btn-danger" idNota="'.$value["id_nota"].'"> <i class="fas fa-lock"></i></button></td>';
                   echo "</tr>";
 
-
+            
                 }
-
                 ?>
 
 
@@ -73,7 +78,9 @@
                  <th class="text-center" width="10px">#</th>
                  <th class="text-center">Nota</th>
                  <th class="text-center">Plan Acción</th>
+                 <?php if($_SESSION["rol"] == "Docente" || $_SESSION["rol"] == "Coordinador"):?>
                  <th class="text-center">Acciones</th>
+                 <?php endif ?>
                </tr>
                </tfoot>
              </table>
@@ -86,13 +93,67 @@
            </div>
            <!-- /. card footer -->
 
-
+           <?php if($_SESSION["rol"] == "Docente" || $_SESSION["rol"] == "Coordinador"):?>
+           <div class="card">
+         <div class="card-header">
+           <h3 class="text-primary"> Editar Nota <i class="fas fa-edit"></i></h3>
          </div>
+         <div class="card-body">
+             <table id="example2" class="table ">
+               <thead class="table-info">
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nota</th>
+                 <th class="text-center">Plan Acción</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </thead>
+               <tbody>
 
-       </div>
-     </div>
-   </div>
- </section>
+
+                <?php  
+
+                $note = NoteController::ctrListarNota();
+                foreach($note as $value) {
+                  
+                  echo "<tr>";
+                  
+                  echo '<form action="" method="post">';
+
+                  echo '<td class="text-center">'.$value["id_nota"].'</td>';
+                  echo '<input type="hidden" class="form-control" value="'.$value["id_nota"].'" name="ideditar">';  
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nota"].'" name="editarnota"></td>';               
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["id_plan"].'" name="editarplan"></td>';           
+                  echo '<td class="text-center">
+                          <button type="submit" class="btn-xs btn-primary"><i class="fas fa-edit"></i></button>
+                       </td>';
+
+                       $editar = new NoteController();
+                       $editar->editNote();
+
+                  echo '</form>';
+
+
+                  echo "</tr>";
+
+                }
+
+                ?>
+
+               </tbody>
+               <tfoot>
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nota</th>
+                 <th class="text-center">Plan Acción</th>
+                 
+                 <th class="text-center">Editar</th>
+                 
+               </tr>
+               </tfoot>
+             </table>
+           </div>
+           <?php endif ?>
  <!-- /. ubicación de tablas y formularios -->
 
 
@@ -100,6 +161,7 @@
 
 
  <!-- modal de nuevo registro -->
+ 
  <div class="modal fade" id="modal-danger">
    <div class="modal-dialog">
      <div class="modal-content">
@@ -110,9 +172,10 @@
            <span aria-hidden="true" class="text-white">&times;</span>
          </button>
        </div>
+       
 
        <form action="" class="validar" method="post">
-
+      
           <div class="modal-body">
 
 
@@ -166,6 +229,7 @@
      </div>
    </div>
  </div>
+ 
  <!-- /. modal de nuevo registro -->
 
 
@@ -173,7 +237,7 @@
 
 
  <!-- modal de nuevo editar -->
- <div class="modal fade" id="modal-editar">
+ <!-- <div class="modal fade" id="modal-editar">
    <div class="modal-dialog">
      <div class="modal-content">
 
@@ -201,22 +265,13 @@
           <div class="modal-footer pull-right">
             <button type="reset" class="btn btn-outline-secondary">Limpiar <i class="fas fa-backspace"></i></button>
            <button type="submit" class="btn btn-success">Guardar <i class="fas fa-save"></i></button>
-         </div>
-
-
-         <?php 
-
-             $note = new NoteController();
-
-             $note-> editNote();
-
-          ?>
+         </div> 
 
      </form>
 
      </div>
    </div>
- </div>
+ </div>-->
  <!-- /. modal de nuevo registro -->
 
 

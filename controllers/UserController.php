@@ -73,18 +73,18 @@
 	
 		  $documento = $_POST["editarDoc"];
 	
-		  $correo = $_POST["editarNDoc"];
+		  $Numdocumento = $_POST["editarNDoc"];
 	
-		  $telefono = $_POST["editarcelular"];
+		  $celular = $_POST["editarcelular"];
 	
-		  $telefono = $_POST["editarrol"];
+		  $rol = $_POST["editarrol"];
 	
-		  $telefono = $_POST["editarcorreo"];
+		  $correo = $_POST["editarcorreo"];
 	
-		  $telefono = $_POST["editardireccion"];
+		  $direccion = $_POST["editardireccion"];
 	
 	
-		  $user = User::editUser($id, $name, $surname, $address, $typeDoc, $document, $role, $email, $cellphone);
+		  $user = User::editUser($id, $nombre, $apellido, $documento, $Numdocumento, $celular, $rol, $correo, $direccion);
 	
 	
 		  if ($user == "true") {
@@ -99,14 +99,14 @@
 				 
 			echo'<script>
 	
-				 window.location = "usuarios"; 
+				 window.location = "inicio"; 
 	
 				</script>';
 	
 		  }
 		}
 	}
-  	public static function new() {
+  	public static function new($name, $surname, $address, $typeDoc, $document, $role, $email, $cellphone) {
 
   		if (isset($_POST["name"])) {
   			
@@ -148,6 +148,7 @@
   			$user = User::new($name, $surname, $encriptar, $address, $typeDoc, $document, $role, $email, $cellphone);
 
   			if ($user == "true") {
+
   				
   				echo "<div class='alert-success'>
 

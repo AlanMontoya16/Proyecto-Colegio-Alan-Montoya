@@ -54,6 +54,9 @@
   require_once "models/Plan.php";
 
 
+  require_once "PHPMailer/PHPMailerAutoload.php";
+
+
 
   $templete = new TempleteController();
 

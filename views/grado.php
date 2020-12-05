@@ -82,14 +82,60 @@
 
            </div>
            <!-- /. card footer -->
-
-
+           <div class="card">
+         <div class="card-header">
+           <h3 class="text-primary"> Editar Grado <i class="fas fa-edit"></i></h3>
          </div>
+         <div class="card-body">
+             <table id="example2" class="table ">
+               <thead class="table-info">
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre(s)</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </thead>
+               <tbody>
 
-       </div>
-     </div>
-   </div>
- </section>
+
+                <?php  
+
+                $degree = DegreeController::ctrListarGrado();
+                foreach($degree as $value) {
+                  
+                  echo "<tr>";
+                  
+                  echo '<form action="" method="post">';
+
+                  echo '<td class="text-center">'.$value["id_grado"].'</td>';
+                  echo '<input type="hidden" class="form-control" value="'.$value["id_grado"].'" name="ideditar">';                 
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombre"].'" name="editarnombre"></td>';           
+                  echo '<td class="text-center">
+                          <button type="submit" class="btn-xs btn-primary"><i class="fas fa-edit"></i></button>
+                       </td>';
+
+                       $editar = new DegreeController();
+                       $editar->editDegree();
+
+                  echo '</form>';
+
+
+                  echo "</tr>";
+
+                }
+
+                ?>
+
+               </tbody>
+               <tfoot>
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre(s)</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </tfoot>
+             </table>
+           </div>
  <!-- /. ubicación de tablas y formularios -->
 
 
@@ -147,7 +193,7 @@
 
 
  <!-- modal de nuevo editar -->
- <div class="modal fade" id="modal-editar">
+ <!-- <div class="modal fade" id="modal-editar">
    <div class="modal-dialog">
      <div class="modal-content">
 
@@ -177,19 +223,11 @@
          </div>
 
 
-         <?php 
-
-             $degree = new DegreeController();
-
-             $degree-> editDegree();
-
-          ?>
-
      </form>
 
      </div>
    </div>
- </div>
+ </div> -->
  <!-- /. modal de nuevo registro -->
 
 

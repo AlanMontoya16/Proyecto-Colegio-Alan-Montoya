@@ -42,27 +42,33 @@
 
       public static function editNote() {
 
-            if (isset($_POST["editarnota"])) {
+            if (isset($_POST["ideditar"])) {
+
+              $id_nota  = $_POST["ideditar"];
               
               $nota = $_POST["editarnota"];
 
-              $id_plan = $_POST["id_plan"];
+              $id_plan = $_POST["editarplan"];
 
 
-              $note = Note::editNote($nota, $id_plan);
+              $note = Note::editNote($id_nota, $nota, $id_plan);
 
 
               if ($note == "true") {
                 
-                echo "<div class='alert-success'>
-                  Nota actualizada correctamente
-                </div>";
-
+                echo'<script>
+    
+                window.location = "nota"; 
+    
+                    </script>';
+    
               }else {
                      
-                      echo "<div class='alert-danger'>
-                        Nota no actualizada
-                      </div>";
+                echo'<script>
+    
+                     window.location = "nota"; 
+    
+                    </script>';
 
               }
             }

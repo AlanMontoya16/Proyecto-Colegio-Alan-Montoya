@@ -33,11 +33,12 @@
 
 
 
- 		public static function editGrade($n_curso) {
+ 		public static function editGrade($id_curso, $n_curso) {
 
 
  			$stmt = Connection::connect()->prepare("UPDATE curso SET n_curso = :n_curso WHERE id_curso = :id_curso");
 
+			$stmt->bindParam(":id_curso", $id_curso, PDO::PARAM_STR);
  			$stmt->bindParam(":n_curso", $n_curso, PDO::PARAM_STR);
 
 

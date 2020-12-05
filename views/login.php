@@ -13,7 +13,6 @@
                 <h3 class="text-center">Iniciar <span class="text-primary">Sesión</span></h3>
                 <center><img src="assets/images/ojalaestes.png" width="200" height="100"></center>
               </div>
-
               <form role="form" id="quickForm" class="validar" method="post">
 
                 <div class="card-body">

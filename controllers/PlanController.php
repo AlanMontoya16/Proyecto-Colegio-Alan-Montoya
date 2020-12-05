@@ -61,33 +61,39 @@
 
       public static function editPlan() {
 
-            if (isset($_POST["editarnombre"])) {
+            if (isset($_POST["ideditar"])) {
               
+                $id_plan = $_POST ["ideditar"];
+
                 $nombre = $_POST["editarnombre"];
 
-                $fecha_inicio = $_POST["editarfecha_inicio"];
+                $fecha_inicio = $_POST["editarfechai"];
   
-                $fecha_cierre = $_POST["editarfecha_cierre"];
+                $fecha_cierre = $_POST["editarfechac"];
   
-                $id_programacion = $_POST["editarid_programacion"];
+                $id_programacion = $_POST["editarprogramacion"];
   
-                $id_dimension = $_POST["editarid_dimension"];
+                $id_dimension = $_POST["editardimension"];
   
 
-              $plan = Plan::editPlan($nombre_actividad, $fecha_inicio, $fecha_cierre, $id_programacion, $id_dimension);
+              $plan = Plan::editPlan($id_plan, $nombre_actividad, $fecha_inicio, $fecha_cierre, $id_programacion, $id_dimension);
 
 
               if ($plan == "true") {
                 
-                echo "<div class='alert-success'>
-                Plan Registrado correctamente
-                </div>";
-
+                echo'<script>
+    
+                window.location = "plan"; 
+    
+                    </script>';
+    
               }else {
                      
-                      echo "<div class='alert-danger'>
-                      Plan no registrado
-                      </div>";
+                echo'<script>
+    
+                     window.location = "plan"; 
+    
+                    </script>';
 
               }
             }

@@ -31,11 +31,14 @@ class SubjectController {
         return $subject;
     }
 
+
     public static function editSubject(){
-        if(isset($_POST["ideditar"]))
+
+        if(isset($_POST["ideditar"])){
+
         $id_asignatura = $_POST["ideditar"];
-        $nombre = $_POST["editarnombre"];
-        $id_grado = $_POST["editargrado"];
+        $nombre = $_POST["editarname"];
+        $id_grado = $_POST["editargrade"];
         
         $subject = Subject::editSubject($id_asignatura, $nombre, $id_grado);
 
@@ -48,7 +51,8 @@ class SubjectController {
                     </script>';
 
 
-        }else 
+        }else {
+
         echo'<script>
         
         window.location = "asignatura";
@@ -61,3 +65,7 @@ class SubjectController {
     
     }
 
+
+}
+
+}

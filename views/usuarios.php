@@ -1,4 +1,6 @@
 
+<?php if( $_SESSION["rol"] == "Docente" ||  $_SESSION["rol"] == "Coordinador"): ?>
+
 <!-- titulo de la aplicacion y miga de pan  -->
  <section class="content-header">
    <div class="container-fluid">
@@ -86,7 +88,6 @@
                  <th class="text-center">Rol</th>
                  <th class="text-center">Correo Electrónico</th>
                  <th class="text-center">Dirección</th>
-                 
                </tr>
                </tfoot>
              </table>
@@ -137,10 +138,68 @@
          echo '<input type="hidden" class="form-control" value="'.$value["id_usuario"].'" name="ideditar">';                 
          echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombreUsuario"].'" name="editarnombre"></td>';           
          echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["apellido"].'" name="editarapellido"></td>';
-         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombreDoc"].'" name="editarDoc"></td>'; 
+         echo'<td class="text-center">';
+
+              echo '<select class="form-control" name="editarDoc" id="typeDoc">';
+
+              if($value["nombreDoc"] == "Cédula Ciudadanía") {
+                 
+                echo '<option value="2">C.C</option>
+                <option value="1">T.I</option>
+                <option value="3">C.E</option>';
+
+              }else if($value["nombreDoc"] == "Tarjeta Identidad") {
+               
+                echo '
+                  <option value="1">T.I</option>
+                  <option value="2">C.C</option>
+                  <option value="3">C.E</option>';
+
+              }else {
+               
+                echo '
+                   <option value="3">C.E</option>
+                   <option value="1">T.I</option>
+                   <option value="2">C.C</option>';
+              }
+
+
+              echo '</select>';
+
+         
+         echo '</td>'; 
          echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["n_documento"].'" name="editarNDoc"></td>';
          echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["celular"].'" name="editarcelular"></td>';
-         echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombreRol"].'" name="editarrol"></td>';               
+         echo '<td class="text-center">
+         <select name="editarrol" id="role" class="form-control">
+         ';
+
+         if($value["nombreRol"] == "Docente") {
+     
+          echo '<option value="1">Docente</option>
+          <option value="2">Estudiante</option>
+          <option value="3">Coordinador</option>';
+
+         }else if($value["nombreRol"] == "Coordinador") {
+
+          echo ' <option value="3">Coordinador</option>
+          <option value="1">Docente</option>
+          <option value="2">Estudiante</option>';
+
+
+         }else if($value["nombreRol"] == "Estudiante") {
+
+          echo '<option value="2">Estudiante</option>
+          <option value="3">Coordinador</option>
+          <option value="1">Docente</option>';
+
+         }
+
+         echo '
+
+         </select>
+
+         </td>';               
          echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["correo"].'" name="editarcorreo"></td>';              
          echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["direccion"].'" name="editardireccion"></td>';
 
@@ -227,7 +286,7 @@
            <div class="form-row">
              <div class="form-group col-md-6">
                <label for="cellphone">Número de celular <span class="text-danger">*</span></label>
-               <input type="number" class="form-control" name="phone" id="phone" placeholder="Digite el número de celular">
+               <input type="number" class="form-control" name="cellphone" id="cellphone" placeholder="Digite el número de celular">
              </div>
 
              <div class="form-group col-md-6">
@@ -237,8 +296,6 @@
                <option value="1">Docente</option>
                <option value="2">Estudiante</option>
                <option value="3">Coordinador</option>
-               <option value="7">Administrador</option>
-               <option value="11">Secretaria</option>
              </select>
              </div>
 
@@ -269,7 +326,6 @@
           $registro = new UserController();
 
           $registro->new();
-         
          ?>
 
      </form>
@@ -278,3 +334,12 @@
    </div>
  </div>
  <!-- /. modal de nuevo registro -->
+
+  <?php else: ?>
+
+  
+  <?php include "views/error_404.php"; ?>
+
+
+
+ <?php endif ?>

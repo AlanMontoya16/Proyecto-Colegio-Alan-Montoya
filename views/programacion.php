@@ -44,7 +44,7 @@
                  <th class="text-center">Asignatura</th>
                  <th class="text-center">Fecha de programación</th>
                  <th class="text-center">Hora de programación</th>
-                 <th class="text-center">Acciones</th>
+                 <th class="text-center">Estado</th>
                </tr>
                </thead>
                <tbody>
@@ -64,19 +64,45 @@
                   echo '<td class="text-center">'.$value["n_curso"].'</td>';
                   echo '<td class="text-center">'.$value["nombrePe"].'</td>';
                   echo '<td class="text-center">'.$value["nombreS"].'</td>';
-                  echo '<td class="text-center">'.$value["fecha_programación"].'</td>';
+                  echo '<td class="text-center">'.$value["fecha_programacion"].'</td>';
                   echo '<td class="text-center">'.$value["hora_programacion"].'</td>';
-                  echo '<td class="text-center">
+                  echo '<td class="text-center">';
 
-                  <button type="button" class="btn-xs btn-info" data-toggle="modal" data-target="#modal-editar"> <i class="fas fa-edit"></i></button>
+                  if($value["estado"] == "Activo"){
 
-                  <button type="button" class="btn-xs btn-danger" idProgramacion="'.$value["id_programacion"].'"> <i class="fas fa-lock"></i></button></td>';
-                  echo "</tr>";
+                    echo '<form action="" method="post">
+                             
+                           <input type="hidden" value="'.$value["id_programacion"].'" name="idinactivar">
+                           <button type="submit" class="btn-xs btn-danger"> <i class="fas fa-trash-alt"></i></button></td>';
+
+                  $inactivar = new ProgrammingController();
+
+                  $inactivar->inactivarProgramacion();
+
+         echo   '</form>';
+
+         }else if($value["estado"] == "Inactivo"){
+
+           echo '<form action="" method="post">
+                    
+                  <input type="hidden" value="'.$value["id_programacion"].'" name="idactivar">
+                  <button type="submit" class="btn-xs btn-success"> <i class="fas fa-check"></i></button></td>';
+
+                  $activar = new ProgrammingController();
+
+                  $activar->activarProgramacion();
+
+         echo   '</form>';
+
+         }
+
+         echo "</tr>";
 
 
-                }
 
-                ?>
+       }
+
+       ?>
 
 
                </tbody>
@@ -91,7 +117,7 @@
                  <th class="text-center">Asignatura</th>
                  <th class="text-center">Fecha de programación</th>
                  <th class="text-center">Hora de programación</th>
-                 <th class="text-center">Acciones</th>
+                 <th class="text-center">Estado</th>
                </tr>
                </tfoot>
              </table>
@@ -103,15 +129,79 @@
 
            </div>
            <!-- /. card footer -->
-
-
+           <div class="card">
+         <div class="card-header">
+           <h3 class="text-primary"> Editar Programación <i class="fas fa-edit"></i></h3>
          </div>
+         <div class="card-body">
+             <table id="example2" class="table ">
+               <thead class="table-info">
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre(s)</th>
+                 <th class="text-center">Usuario</th>
+                 <th class="text-center">Curso</th>
+                 <th class="text-center">Periodo</th>
+                 <th class="text-center">Asignatura</th>
+                 <th class="text-center">Fecha de programación</th>
+                 <th class="text-center">Hora de programación</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </thead>
+               <tbody>
 
-       </div>
-     </div>
-   </div>
+
+                <?php  
+
+                $programming = ProgrammingController::ctrListarProgramacion();
+                foreach($programming as $value) {
+                  
+                  echo "<tr>";
+                  
+                  echo '<form action="" method="post">';
+
+                  echo '<td class="text-center">'.$value["id_programacion"].'</td>';
+                  echo '<input type="hidden" class="form-control" value="'.$value["id_programacion"].'" name="ideditar">';                 
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombreP"].'" name="editarnombre"></td>';
+                  echo '<select class="form-control" name="editarUsuario" id="editarnombre">';
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombreU"].'" name="editarusuario"></td>';
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["n_curso"].'" name="editarcurso"></td>';
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombrePe"].'" name="editarperiodo"></td>';
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombreS"].'" name="editarasignatura"></td>';
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["fecha_programacion"].'" name="editarfecha"></td>';
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["hora_programacion"].'" name="editarhora"></td>';           
+                  echo '<td class="text-center">
+                          <button type="submit" class="btn-xs btn-primary"><i class="fas fa-edit"></i></button>
+                       </td>';
+
+                       $editar = new ProgrammingController();
+                       $editar->editProgramming();
+
+                  echo '</form>';
 
 
+                  echo "</tr>";
+
+                }
+
+                ?>
+
+               </tbody>
+               <tfoot>
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre(s)</th>
+                 <th class="text-center">Usuario</th>
+                 <th class="text-center">Curso</th>
+                 <th class="text-center">Periodo</th>
+                 <th class="text-center">Asignatura</th>
+                 <th class="text-center">Fecha de programación</th>
+                 <th class="text-center">Hora de programación</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </tfoot>
+             </table>
+           </div>
     <!-- CALENDARIO -->
     <div class="col-12">
      <div class="card card-outline card-warning+">
@@ -122,7 +212,6 @@
            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
              <i class="fas fa-minus"></i>
            </button>
-
          </div>
        </div>
 
@@ -354,7 +443,7 @@
 
              {
                title: "'.$value["nombreP"].'",
-               start: "'.$value["fecha_programación"].' '.$value["hora_programacion"].'",
+               start: "'.$value["fecha_programacion"].' '.$value["hora_programacion"].'",
                backgroundColor: "#f56954"
              },
 

@@ -6,11 +6,12 @@
  class Period extends Connection {
 
 
- 	public static function newPeriod($nombre, $fecha_inicio, $fecha_cierre, $fecha_entrega_notas) {
+ 	public static function newPeriod($id_periodo,$nombre, $fecha_inicio, $fecha_cierre, $fecha_entrega_notas) {
 
 
- 		$stmt = Connection::connect()->prepare("INSERT INTO periodo(nombre, fecha_inicio, fecha_cierre, fecha_entrega_notas) VALUES(:nombre, :fecha_inicio, :fecha_cierre, :fecha_entrega_notas)");
+ 		$stmt = Connection::connect()->prepare("INSERT INTO periodo(id_periodo, nombre, fecha_inicio, fecha_cierre, fecha_entrega_notas) VALUES(:id_periodo,:nombre, :fecha_inicio, :fecha_cierre, :fecha_entrega_notas)");
 
+		$dtmt->bindParam(":id_periodo", $id_periodo, PDO::PARAM_STR);
  		$stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
  		$stmt->bindParam(":fecha_inicio", $fecha_inicio, PDO::PARAM_STR);
  		$stmt->bindParam(":fecha_cierre", $fecha_cierre, PDO::PARAM_STR);

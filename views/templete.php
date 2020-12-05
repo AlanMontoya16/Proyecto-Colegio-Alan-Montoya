@@ -40,7 +40,7 @@
 
 				
 
-				if ($_GET["route"] == "usuarios" || $_GET["route"] == "inicio" || $_GET["route"] == "salir" || $_GET["route"] == "acudientes" || $_GET["route"] == "asignatura" || $_GET["route"] == "curso" || $_GET["route"] == "dimension" || $_GET["route"] == "periodo" || $_GET["route"] == "nota" || $_GET ["route"] == "grado" || $_GET ["route"] == "programacion" || $_GET ["route"] == "plan") {
+				if ($_GET["route"] == "usuarios" || $_GET["route"] == "inicio" || $_GET["route"] == "salir" || $_GET["route"] == "acudientes" || $_GET["route"] == "asignatura" || $_GET["route"] == "curso" || $_GET["route"] == "dimension" || $_GET["route"] == "periodo" || $_GET["route"] == "nota" || $_GET ["route"] == "grado" || $_GET ["route"] == "programacion" || $_GET ["route"] == "plan" || $_GET ["route"] == "index") {
 					
 
 					include "views/layout/layout.php";

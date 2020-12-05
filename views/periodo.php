@@ -93,12 +93,69 @@
            <!-- /. card footer -->
 
 
+           <div class="card">
+         <div class="card-header">
+           <h3 class="text-primary"> Editar Curso <i class="fas fa-edit"></i></h3>
          </div>
+         <div class="card-body">
+             <table id="example2" class="table ">
+               <thead class="table-info">
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre periodo</th>
+                 <th class="text-center">Fecha de inicio</th>
+                 <th class="text-center">Fecha de cierre</th>
+                 <th class="text-center">Fecha para entregar notas</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </thead>
+               <tbody>
 
-       </div>
-     </div>
-   </div>
- </section>
+
+                <?php  
+
+                $period = PeriodController::ctrListarPeriodo();
+                foreach($period as $value) {
+                  
+                  echo "<tr>";
+                  
+                  echo '<form action="" method="post">';
+
+                  echo '<td class="text-center">'.$value["id_periodo"].'</td>';
+                  echo '<input type="hidden" class="form-control" value="'.$value["id_periodo"].'" name="ideditar">';                 
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["nombre"].'" name="editarnombre"></td>';    
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["fecha_inicio"].'" name="editarfechai"></td>'; 
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["fecha_cierre"].'" name="editarfechac"></td>'; 
+                  echo '<td class="text-center"><input type="text" class="form-control" value="'.$value["fecha_entrega_notas"].'" name="editafechae"></td>';        
+                  echo '<td class="text-center">
+                          <button type="submit" class="btn-xs btn-primary"><i class="fas fa-edit"></i></button>
+                       </td>';
+
+                       $editar = new PeriodController();
+                       $editar->editPeriod();
+
+                  echo '</form>';
+
+
+                  echo "</tr>";
+
+                }
+
+                ?>
+
+               </tbody>
+               <tfoot>
+               <tr>
+               <th class="text-center" width="10px">#</th>
+                 <th class="text-center">Nombre periodo</th>
+                 <th class="text-center">Fecha de inicio</th>
+                 <th class="text-center">Fecha de cierre</th>
+                 <th class="text-center">Fecha para entregar notas</th>
+                 <th class="text-center">Editar</th>
+               </tr>
+               </tfoot>
+             </table>
+           </div>
  <!-- /. ubicación de tablas y formularios -->
 
 
@@ -171,7 +228,7 @@
 
 
 
- <!-- modal de nuevo editar -->
+ <!-- modal de nuevo editar 
  <div class="modal fade" id="modal-editar">
    <div class="modal-dialog">
      <div class="modal-content">
@@ -215,23 +272,16 @@
 <div class="modal-footer pull-right">
  <button type="reset" class="btn btn-outline-secondary">Limpiar <i class="fas fa-backspace"></i></button>
 <button type="submit" class="btn btn-success">Guardar <i class="fas fa-save"></i></button>
-</div>
+</div> -->
 
-
-         <?php 
-
-             $period = new PeriodController();
-
-             $period-> editPeriod();
-
-          ?>
+<!-- 
 
      </form>
 
      </div>
    </div>
- </div>
- <!-- /. modal de nuevo registro -->
+ </div> -->
+ <!-- /. modal de nuevo registro 
 
 
 

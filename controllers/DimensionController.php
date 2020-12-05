@@ -28,34 +28,74 @@ class DimensionController {
 
         return $dimension;
     }
+  
     public static function editDimension() {
 
-        if (isset($_POST["editardimension"])) {
-          
+        if (isset($_POST["ideditar"])) {
+          $id_dimension = $_POST["ideditar"];
           $nombre = $_POST["editarnombre"];
-          $estado = $_POST["editarestado"];
 
-
-
-          $dimension= Dimension::editDimension($nombre, $estado);
+          $dimension= Dimension::editDimension($id_dimension, $nombre);
 
 
           if ($dimension == "true") {
-            
-            echo "<div class='alert-success'>
-              Dimensión actualizada correctamente
-            </div>";
+                
+            echo'<script>
+
+            window.location = "dimension"; 
+
+                </script>';
 
           }else {
                  
-                  echo "<div class='alert-danger'>
-                    Dimensión no actualizada
-                  </div>";
+            echo'<script>
 
+                 window.location = "dimension"; 
+
+                </script>';
           }
         }
 }
+public static function inactivarDimension() {
+
+  if(isset($_POST["idinactivar"])){
+
+    $id_dimension = $_POST["idinactivar"];
+
+    $dimension = Dimension::inactivarDimension($id_dimension);
+
+    if($dimension == "ok") {
+
+      echo'<script>
+
+            window.location = "dimension"; 
+
+        </script>';
+
+    }
+
+  }
+}
 
 
+public static function activarDimension() {
 
+  if(isset($_POST["idactivar"])){
+
+    $id_dimension = $_POST["idactivar"];
+
+    $dimension = Dimension::activarDimension($id_dimension);
+
+    if($dimension == "ok") {
+
+      echo'<script>
+
+            window.location = "dimension"; 
+
+        </script>';
+
+    }
+
+  }
+}
 }
